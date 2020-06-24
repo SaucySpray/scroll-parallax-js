@@ -1,0 +1,27 @@
+{
+  "name": "scroll-parallax-js",
+  "version": "1.0.0",
+  "description": "User friendly and easy to use scroll parallax.",
+  "main": "ScrollParallaxJS.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaucySpray/scroll-parallax-js.git"
+  },
+  "keywords": [
+    "scroll",
+    "parallax",
+    "scroll-parallax-js",
+    "html",
+    "parallax",
+    "animation"
+  ],
+  "author": "Alexandre Chabeau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SaucySpray/scroll-parallax-js/issues"
+  },
+  "homepage": "https://github.com/SaucySpray/scroll-parallax-js#readme"
+}
