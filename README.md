@@ -1,11 +1,11 @@
-ScrollParallaxJS
-===========
+## ScrollParallaxJS ##
 
 [![NPM package][npm]][npm-url]
 
 #### Light weight Javascript text splitter ####
 
-This Javascript text splitter has been created to allow easy and seo friendly text splitting (for animations) in two lines of code, it's including words, letters, spaces and special characters splitting.
+ScrollParallaxJS is an easy to use parallax on scroll package. It allow user friendly parallax setings via HTML data-attributes.
+Only two lines of javascript, non-mandatory custom options, HTML class & attributes and you'r ready to go.
 
 [Example](https://codepen.io/Saucy_/pen/aeWeRE) &mdash;
 [Repository](https://github.com/SaucySpray/scroll-parallax-js) &mdash;
@@ -13,7 +13,7 @@ This Javascript text splitter has been created to allow easy and seo friendly te
 
 ### Usage ###
 
-Download the [file](https://registry.npmjs.org/scroll-parallax-js/-/scroll-parallax-js-1.0.0.tgz) and include it in your HTML
+Download the [file](https://registry.npmjs.org/scroll-parallax-js/-/scroll-parallax-js-1.0.1.tgz) and include it in your HTML
 ```html
 <script src="/ScrollParallaxJS.js"></script>
 ```
@@ -36,26 +36,28 @@ Then, **use** _ScrollParallaxJS_ :
 
 ```html
 <div class="container">
-    <!-- You have to wrap your elements with .ScrollParallaxJS__wrapper -->
-    <div class="ScrollParallaxJS__wrapper">
-        <!-- You have to use .ScrollParallaxJS__el on animated elements -->
+    <!-- You have to wrap your animated elements with .scrollparallaxjs__wrapper -->
+    <div class="wrapper scrollparallaxjs__wrapper">
+        <!-- You have to use .scrollparallaxjs__el on animated elements -->
         <div
-            class="el ScrollParallaxJS__el"
-            ScrollParallaxJS-scale="0.8"
-            ScrollParallaxJS-y="100"
-            ScrollParallaxJS-opacity="0.5"
+            class="el scrollparallaxjs__el"
+            scrollparallaxjs-scale="0.8"
+            scrollparallaxjs-y="100"
+            scrollparallaxjs-opacity="0.5"
+            scrollparallaxjs-duration="1"
         ></div>
-        <!-- Define animations on scroll with ScrollParallaxJS data attributes -->
+        <!-- Define animations on scroll with scrollparallaxjs data attributes -->
         <div
-            class="el ScrollParallaxJS__el"
-            ScrollParallaxJS-rotate="45deg"
-            ScrollParallaxJS-y="-50"
+            class="el scrollparallaxjs__el"
+            scrollparallaxjs-rotate="45deg"
+            scrollparallaxjs-y="-50"
+            scrollparallaxjs-delay="0.1"
         ></div>
         <div
-            class="el ScrollParallaxJS__el"
-            ScrollParallaxJS-scale="1.2"
-            ScrollParallaxJS-x="100"
-            ScrollParallaxJS-y="75"
+            class="el scrollparallaxjs__el"
+            scrollparallaxjs-scale="1.2"
+            scrollparallaxjs-x="100"
+            scrollparallaxjs-y="75"
         ></div>
     </div>
 </div>
@@ -95,8 +97,29 @@ The css is entirely yours, but you can use my example :
 const container = document.querySelector('.container');
 
 // Define the container of the parallax and add options
-const containerParallax = new ScrollParallaxJS(container, {simultaneous: true});
+const containerParallax = new ScrollParallaxJS(container, { simultaneous: false });
 ```
+
+### Options ###
+
+ScrollParallaxJS comes with multiples options :
+```javascript
+{
+    duration: '100%',
+    triggerHook: 0,
+    offset: 0,
+    pinned: true,
+    indicators: false,
+    simultaneous: true,
+    prefix: 'scrollparallaxjs'
+}
+```
+You can overwrite theses options when you create a new parallax :
+```javascript
+const container = document.querySelector('.container');
+const scrollParallax = new ScrollParallaxJS(container, { duration: 50%, pinned: false, prefix: 'custom-prefix' });
+```
+
 
 ### Change log ###
 

@@ -1,21 +1,20 @@
 {
   "name": "scroll-parallax-js",
   "version": "1.0.0",
-  "description": "User friendly and easy to use scroll parallax.",
+  "description": "HTML controlled easy to use parallax on scroll.",
   "main": "ScrollParallaxJS.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SaucySpray/scroll-parallax-js.git"
   },
   "keywords": [
+    "scroll-parallax-js",
     "scroll",
     "parallax",
-    "scroll-parallax-js",
+    "scroll parallax",
+    "parallax scroll",
+    "parallax on scroll",
     "html",
-    "parallax",
     "animation"
   ],
   "author": "Alexandre Chabeau",
@@ -23,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/SaucySpray/scroll-parallax-js/issues"
   },
-  "homepage": "https://github.com/SaucySpray/scroll-parallax-js#readme"
+  "homepage": "https://github.com/SaucySpray/scroll-parallax-js#readme",
+  "dependencies": {
+    "gsap": "^3.3.4",
+    "scrollmagic": "^2.0.7",
+    "scrollmagic-plugin-gsap": "^1.0.4"
+  }
 }

@@ -4,14 +4,18 @@
  * Contact: alexandrechabeau.pro@gmail.com
  * Original repos: https://github.com/saucyspray/scroll-parallax-js
  */
+import { TweenMax, TimelineMax } from 'gsap'
+import ScrollMagic from 'scrollmagic'
+import { ScrollMagicPluginGsap } from "scrollmagic-plugin-gsap"
+ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax)
 
 const defaultOptions = {
     duration: '100%',
     triggerHook: 0,
     offset: 0,
     pinned: true,
-    indicators: false,
     simultaneous: true,
+    prefix: 'scrollparallaxjs'
 }
 
 class ScrollParallaxJS {
@@ -25,10 +29,25 @@ class ScrollParallaxJS {
         // Setup container, options, & variables
         this.container = _container
         this.options = {..._options, ..._custom}
-        this.wrapper = this.container.querySelector('.ScrollParallaxJS__wrapper')
-        this.layers = [...this.wrapper.querySelectorAll('.ScrollParallaxJS__el')]
+
+        if(this.testUpperCase(this.options.prefix)) {
+            console.error('ScrollParallaxJS: prefix should be lowercase.')
+        }
+        this.wrapper = this.container.querySelector(`.${this.options.prefix}__wrapper`)
+        if(!this.wrapper) {
+            console.error('ScrollParallaxJS: can\'t find prefix wrapper.')
+        }
+        this.layers = [...this.wrapper.querySelectorAll(`.${this.options.prefix}__el`)]
+        if(this.layers.length === 0) {
+            console.error('ScrollParallaxJS: no parallax element found.')
+        }
+
 
         this.tl = new TimelineMax()
+    }
+
+    testUpperCase(_string) {
+        return /[A-Z]/.test(_string)
     }
 
     events() {
@@ -56,15 +75,6 @@ class ScrollParallaxJS {
             this.scene.setPin(this.wrapper)
             : null
 
-        this.options.indicators ? 
-            this.scene.addIndicators({
-                colorTrigger: "black",
-                colorStart: "green",
-                colorEnd: "red",
-                indent: 5
-            })
-            : null
-
         this.scene.setTween(this.tl)
 
         this.scene.addTo(this.controller)
@@ -74,13 +84,16 @@ class ScrollParallaxJS {
         const attributes = [..._el.attributes]
         const sortedAttributes = {}
 
-        // Check for each elements attributes if they contains "ScrollParallaxJS-"
+        // Check for each elements attributes if they contains "ScrollParallaxJS-" or "CustomPrefix-"
         attributes.forEach(attribute => {
-            if(attribute.localName.includes('ScrollParallaxJS-')) {
+            if(attribute.localName.includes(`${this.options.prefix}-`)) {
+                if(attribute.localName.includes(`${this.options.prefix}-ease`)) {
+                    console.error('ScrollParallaxJS: gsap ease not supported.')
+                }
                 // If they do, add the value to the sortedAttributes object
                 Object.defineProperty(
                     sortedAttributes,
-                    attribute.localName.replace('ScrollParallaxJS-', ''),
+                    attribute.localName.replace(`${this.options.prefix}-`, ''),
                     {
                         value: attribute.value,
                         writable: false,
@@ -100,13 +113,12 @@ class ScrollParallaxJS {
         // Add to timeline
         this.tl.to(
             _el,
-            1,
             attributes,
             this.options.simultaneous ?
                 '-=1'
-                : null
+                : attributes.delay
         )
     }
 }
 
-module.exports = ScrollParallaxJS;
+export default ScrollParallaxJS
