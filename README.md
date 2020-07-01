@@ -2,12 +2,12 @@
 
 [![NPM package][npm]][npm-url]
 
-#### Light weight Javascript text splitter ####
+#### Scroll Parallax Javascript handled by HTML class & attributes ####
 
 ScrollParallaxJS is an easy to use parallax on scroll package. It allow user friendly parallax setings via HTML data-attributes.
 Only two lines of javascript, non-mandatory custom options, HTML class & attributes and you'r ready to go.
 
-[Example](https://codepen.io/Saucy_/pen/aeWeRE) &mdash;
+[Example](https://codesandbox.io/s/ecstatic-moon-qx7m7?file=/index.html) &mdash;
 [Repository](https://github.com/SaucySpray/scroll-parallax-js) &mdash;
 [Questions](http://stackoverflow.com/questions/tagged/scroll-parallax-js)
 
